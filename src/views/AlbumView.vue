@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
 import { useAlbum } from "@/composables/useAlbum";
-import {
-  IconSquareRoundedArrowLeft,
-  IconArrowUpRight,
-} from "@tabler/icons-vue";
+import { IconSquareRoundedArrowLeft } from "@tabler/icons-vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -19,7 +16,7 @@ const goToHome = () => {
 };
 
 // Albüm detay sayfasına git
-const goToAlbumDetail = (albumId) => {
+const goToAlbumDetail = (albumId: number) => {
   router.push(`/user/${userId}/albums/${albumId}`);
 };
 </script>

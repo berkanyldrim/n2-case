@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAlbumPhotos } from "@/composables/useAlbumPhotos";
-import {
-  IconSquareRoundedArrowLeft,
-  IconArrowUpRight,
-} from "@tabler/icons-vue";
+import { IconSquareRoundedArrowLeft } from "@tabler/icons-vue";
 
 const route = useRoute();
 const router = useRouter();
