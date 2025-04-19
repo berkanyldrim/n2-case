@@ -1,36 +1,24 @@
 <script setup lang="ts">
-import { Sidebar, SidebarContent, SidebarFooter } from "./ui/sidebar";
-import { IconUsers } from "@tabler/icons-vue";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+import AppSidebar from "./AppSidebar.vue";
+import UserSidebar from "./UserSidebar.vue";
+
+const route = useRoute();
+
+const isTodoPage = computed(
+  () =>
+    route.name === "todos" ||
+    route.name === "posts" ||
+    route.name === "albums" ||
+    route.name === "album-detail"
+);
 </script>
 
 <template>
   <div class="flex w-full h-screen bg-[#F9FAFB]">
-    <!-- Sidebar -->
-    <Sidebar class="w-[240px] border-r border-[#D8D9DD] bg-[#D8D9DD]">
-      <SidebarContent class="flex-grow pt-6">
-        <!-- Active route design -->
-        <div class="flex items-center">
-          <div
-            class="w-[6px] h-[40px] bg-[#4F359B] rounded-tr-[6px] rounded-br-[6px]"
-          ></div>
-          <div class="flex items-center gap-2 ml-3">
-            <IconUsers class="text-[#26303E] active:text-[#4F359B] w-6 h-6" />
-            <h1
-              class="text-[#26303E] active:text-[#4F359B] font-[400px] text-lg"
-            >
-              Users
-            </h1>
-          </div>
-        </div>
-      </SidebarContent>
-
-      <SidebarFooter class="border-t border-[#D8D9DD] p-4">
-        <div class="flex items-center space-x-2">
-          <img src="/images/logo.png" alt="Logo" class="w-8 h-8" />
-          <h1 class="text-[#485B69] font-semibold">N2Mobil</h1>
-        </div>
-      </SidebarFooter>
-    </Sidebar>
+    <UserSidebar v-if="isTodoPage" />
+    <AppSidebar v-else />
 
     <!-- Main Content -->
     <div class="flex-1 flex flex-col overflow-auto bg-white">
