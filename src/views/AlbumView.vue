@@ -7,15 +7,12 @@ const route = useRoute();
 const router = useRouter();
 const userId = Number(route.params.userId);
 
-// JSONPlaceholder API'den albümleri getir
 const { data: albums, isLoading } = useAlbum(userId);
 
-// Ana sayfaya dön
 const goToHome = () => {
   router.push("/");
 };
 
-// Albüm detay sayfasına git
 const goToAlbumDetail = (albumId: number) => {
   router.push(`/user/${userId}/albums/${albumId}`);
 };
@@ -38,7 +35,6 @@ const goToAlbumDetail = (albumId: number) => {
           </span>
         </div>
 
-        <!-- Yükleniyor Durumu -->
         <div
           v-if="isLoading"
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -60,7 +56,6 @@ const goToAlbumDetail = (albumId: number) => {
           </div>
         </div>
 
-        <!-- Albüm Grid -->
         <div
           v-else-if="albums && albums.length > 0"
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -112,13 +107,12 @@ const goToAlbumDetail = (albumId: number) => {
 
             <div class="mt-2">
               <p class="text-[14px] text-[#26303E] font-normal truncate">
-                Non esse culpa molestiae omnis sed ol...
+                {{ album.title }}
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Veri Yok Durumu -->
         <div v-else class="text-center py-12">
           <p class="text-[#5C6672]">Kullanıcıya ait albüm bulunamadı.</p>
         </div>

@@ -23,7 +23,6 @@ const userId = Number(route.params.userId);
 
 const { data: posts, isLoading: isLoadingPosts } = usePost(userId);
 
-// Seçilen post ve dialog durumu
 const selectedPost = ref<Post | null>(null);
 const isDialogOpen = ref(false);
 const selectedPostId = ref<number | null>(null);
@@ -42,7 +41,6 @@ const {
   refresh: refreshComments,
 } = useComment(activePostId);
 
-// Dialog kapandığında seçilen post'u temizle
 watch(isDialogOpen, (newValue) => {
   if (newValue === true && selectedPostId.value) {
     refreshComments();

@@ -9,13 +9,10 @@ const router = useRouter();
 const userId = Number(route.params.userId);
 const albumIdParam = Number(route.params.albumId);
 
-// Ref olarak albumId tanımlayalım
 const albumId = ref(albumIdParam);
 
-// Album ve fotoğraf verilerini composable ile alalım
 const { data: photos, album, isLoading } = useAlbumPhotos(albumId);
 
-// Albümler sayfasına geri dön
 const goToAlbums = () => {
   router.push(`/user/${userId}/albums`);
 };
